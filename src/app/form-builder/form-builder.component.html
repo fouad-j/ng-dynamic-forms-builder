@@ -1,0 +1,56 @@
+<div [formGroup]="formGroup">
+  <div class="row g-3">
+
+    <div *ngFor="let formInput of questions"
+         [class]="formInput.bootstrapColSize ? 'col-' + formInput.bootstrapColSize : 'col-12'">
+
+      <label [for]="formInput.code"
+             *ngIf="!formInput.hideLabel"
+             class="form-label">
+        {{formInput.label}}
+      </label>
+
+      <ng-container [ngSwitch]="formInput.type">
+
+        <ng-container *ngSwitchCase="basicHtmlType.includes(formInput.type) ? formInput.type : null">
+          <input [id]="formInput.code"
+                 [formControlName]="formInput.code"
+                 [type]="formInput.type"
+                 class="form-control"
+                 autocomplete="off">
+        </ng-container>
+
+        <ng-container *ngSwitchCase="inputType.SELECT">
+          <select [id]="formInput.code"
+                  [formControlName]="formInput.code"
+                  class="form-select">
+            <option *ngFor="let opt of formInput.options" [value]="opt.code">{{opt.label}}</option>
+          </select>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="inputType.CHECKBOX">
+          <div class="form-check">
+            <input [id]="formInput.code"
+                   [formControlName]="formInput.code"
+                   class="form-check-input"
+                   type="checkbox">
+            <label class="form-check-label" [for]="formInput.code">
+              {{formInput.label}}
+            </label>
+          </div>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="inputType.TEXTAREA">
+          <textarea [id]="formInput.code"
+                    [formControlName]="formInput.code"
+                    class="form-control"
+                    rows="4"></textarea>
+        </ng-container>
+
+        <div *ngIf="formInput.description" class="form-text">{{formInput.description}}</div>
+
+      </ng-container>
+    </div>
+  </div>
+
+</div>
