@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {createFormGroup} from "../form-builder/form-builder";
-import { FormInput } from '../form-builder/form-builder.types';
+import {FormInput} from '../form-builder/form-builder.types';
 import {basicFormDefinition} from "./basic-form-definition";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-basic-form',
@@ -11,11 +11,11 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 export class BasicFormComponent implements OnInit {
 
   public formDefinition: FormInput[] = basicFormDefinition;
-  public formGroup: FormGroup = createFormGroup(this.formBuilder, basicFormDefinition);
+  public formGroup: FormGroup = createFormGroup(basicFormDefinition);
 
   payLoad = '';
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor() { }
 
   ngOnInit(): void {
   }

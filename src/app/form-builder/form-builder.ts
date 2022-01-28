@@ -1,12 +1,13 @@
-import {FormBuilder, FormGroup, ValidatorFn, Validators} from '@angular/forms';
-import { BaseInput, FormValidators } from './form-builder.types';
+import {FormControl, FormGroup, ValidatorFn, Validators} from '@angular/forms';
+import {BaseInput, FormValidators} from './form-builder.types';
 
-export const createFormGroup = (formBuilder: FormBuilder, controls: BaseInput[]): FormGroup => {
-  const form: FormGroup = formBuilder.group({});
+export const createFormGroup = (controls: BaseInput[]): FormGroup => {
+  const form: FormGroup = new FormGroup({})
+
 
   for (const control of controls) {
     const validators = getValidators(control.validators);
-    form.addControl(control.code, formBuilder.control(control.value, validators));
+    form.addControl(control.code, new FormControl(control.value, validators));
   }
 
   return form;
