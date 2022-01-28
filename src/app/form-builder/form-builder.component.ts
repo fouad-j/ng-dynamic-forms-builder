@@ -9,7 +9,7 @@ import {INPUT_TYPE} from "./input-type.enum";
 })
 export class FormBuilderComponent implements OnInit {
 
-  @Input() public questions!: Array<FormInput>;
+  @Input() public formDefinition: Array<FormInput> = [];
 
   @Input() public formGroup: FormGroup = new FormGroup({});
 

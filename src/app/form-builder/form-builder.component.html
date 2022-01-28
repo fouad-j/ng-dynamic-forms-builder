@@ -1,7 +1,7 @@
-<div [formGroup]="formGroup">
+<ng-container [formGroup]="formGroup">
   <div class="row g-3">
 
-    <div *ngFor="let formInput of questions"
+    <div *ngFor="let formInput of formDefinition"
          [class]="formInput.bootstrapColSize ? 'col-' + formInput.bootstrapColSize : 'col-12'">
 
       <label [for]="formInput.code"
@@ -53,4 +53,4 @@
     </div>
   </div>
 
-</div>
+</ng-container>
